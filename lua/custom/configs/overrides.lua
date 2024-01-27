@@ -44,8 +44,12 @@ M.mason = {
     "rust-analyzer",
 
     -- go stuff
-    "gopls"
+    "gopls",
 
+    -- java stuff
+    "java-debug-adapter",
+    "java-test",
+    "jdtls"
   },
 }
 

@@ -79,6 +79,14 @@ local plugins = {
     build = function ()
       vim.cmd [[silent! GoInstallDeps]]
     end
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+--    ft = "java",
+--    dependencies = { "mfussenegger/nvim-dap", "neovim/nvim-lspconfig"},
+--    opts = function()
+--      return require('custom.configs.java')
+--    end
   }
 }
 
