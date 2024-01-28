@@ -2,6 +2,14 @@ local overrides = require("custom.configs.overrides")
 
 local plugins = {
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = overrides.treesitter
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvimtree
+  },
+  {
     "williamboman/mason.nvim",
     opts = overrides.mason
   },
@@ -87,6 +95,16 @@ local plugins = {
 --    opts = function()
 --      return require('custom.configs.java')
 --    end
+  },
+  {
+    'LhKipp/nvim-nu',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    init = function()
+      require("nu").setup{}
+    end,
+    build = function()
+      vim.cmd [[silent! TSInstall nu]]
+    end
   }
 }
 

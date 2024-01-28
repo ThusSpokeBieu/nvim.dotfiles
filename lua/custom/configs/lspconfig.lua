@@ -3,6 +3,14 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
+-- nushell 
+lspconfig.nushell.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"nu", "--lsp"},
+  filetypes = {"nu"},
+  single_file_support = true,
+})
 -- rust 
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
@@ -11,7 +19,7 @@ lspconfig.rust_analyzer.setup({
   root_dir = util.root_pattern("Cargo.toml"),
   settings = {
     ['rust-analyzer'] = {
-      cargo = { 
+      cargo = {
         allFeatures = true,
       }
     }

@@ -15,6 +15,8 @@ M.treesitter = {
     "go",
     "rust",
     "java",
+    "nu",
+    "json"
   },
   indent = {
     enable = true,
