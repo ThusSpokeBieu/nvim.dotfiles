@@ -3,6 +3,12 @@ local M = {}
 M.dap = {
   plugin = true,
   n = {
+    ["<leader>dc"] = {
+      function()
+       require("dap").continue()
+      end,
+      "Continue or start debug"
+    },
     ["<leader>db"] = {
       "<cmd> DapToggleBreakpoint <CR>",
       "Toogle breakpoint"

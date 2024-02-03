@@ -45,6 +45,12 @@ lspconfig.gopls.setup {
   }
 }
 
+-- dotnet
+lspconfig.csharp_ls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- java
 local home = os.getenv('HOME')
 local jdtls = require('jdtls')
@@ -91,6 +97,10 @@ lspconfig.jdtls.setup {
           {
             name = "JavaSE-21",
             path = "/home/mess/.sdkman/candidates/java/21.0.2-graal"
+          },
+          {
+            name= "JavaSE-17",
+            path = "/home/mess/.sdkman/candidates/java/17.0.10-tem"
           },
         },
         updateBuildConfiguration = "interactive",

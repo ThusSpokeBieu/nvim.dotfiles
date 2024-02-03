@@ -3,9 +3,21 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
-    null_ls.builtins.formatting.gofumpt,
-    null_ls.builtins.formatting.goimports_reviser,
-    null_ls.builtins.formatting.golines,
+    null_ls.builtins.formatting.gofumpt.with({
+      filetypes = { "go" }
+    }),
+    null_ls.builtins.formatting.goimports_reviser.with({
+      filetypes = { "go" }
+    }),
+    null_ls.builtins.formatting.golines.with({
+      filetypes = { "go" }
+    }),
+    null_ls.builtins.formatting.csharpier.with({
+      filetypes = { "cs" }
+    }),
+    null_ls.builtins.formatting.google_java_format.with({
+      filetypes = {"java"}
+    }),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

@@ -50,7 +50,8 @@ local plugins = {
     ft = "go",
     dependencies = "mfussenegger/nvim-dap",
     config = function(_, opts)
-      require("dap-go").setup(opts)
+      require("dap-go").setup(opts)      
+      require("core.utils").load_mappings("dap_go")
     end
   },
   {
@@ -71,8 +72,8 @@ local plugins = {
     end
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
+    "nvimtools/none-ls.nvim",
+    ft = { "go", "cs", "java" },
     opts = function()
       return require('custom.configs.null-ls')
     end
