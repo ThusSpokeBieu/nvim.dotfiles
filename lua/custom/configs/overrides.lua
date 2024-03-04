@@ -51,7 +51,8 @@ M.mason = {
     -- java stuff
     "java-debug-adapter",
     "java-test",
-    "jdtls"
+    "jdtls",
+    "google-java-format",
   },
 }
 

@@ -11,6 +11,7 @@ lspconfig.nushell.setup({
   filetypes = {"nu"},
   single_file_support = true,
 })
+
 -- rust 
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
@@ -73,14 +74,17 @@ vim.list_extend(bundles,
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+local function java_on_attach(client, bufnr)
+  on_attach(client, bufnr)
+  require('jtdls').setup_dap({ hotcodereplace = 'auto'})
+end
+
 lspconfig.jdtls.setup {
-  on_attach = on_attach,
+  on_attach = java_on_attach,
   capabilities = capabilities,
   settings = {
     flags = {
       allow_incremental_sync = true,
-    },
-    init_options = {
     },
     java = {
                   saveActions = {
@@ -161,6 +165,7 @@ lspconfig.jdtls.setup {
   },
   cmd = {
     "java",
+    "--enable-preview",
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -181,3 +186,5 @@ lspconfig.jdtls.setup {
     bundles = bundles,
   },
 }
+
+require('dap.ext.vscode').load_launchjs()
